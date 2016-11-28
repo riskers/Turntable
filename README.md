@@ -1,6 +1,8 @@
 # Turntable
 转盘抽奖
 
+https://riskers.github.io/Turntable/example.html
+
 ## Install
 
 ### npm
