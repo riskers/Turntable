@@ -8,7 +8,7 @@ https://riskers.github.io/Turntable/example.html
 ### npm
 
 ```
-npm install @q/Turntable
+npm install Turntable
 ```
 
 ### script
