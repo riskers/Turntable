@@ -3,7 +3,7 @@ var path = require('path')
 var UglifyJsPlugin = webpack.optimize.UglifyJsPlugin
 var env = process.env.WEBPACK_ENV
 
-var libraryName = 'Turntable'
+var libraryName = 'Turntable',
 	plugins = [],
 	outoutFile = ''
 
@@ -43,7 +43,5 @@ var config = {
 	},
 	plugins: plugins
 }
-
-
 
 module.exports = config
