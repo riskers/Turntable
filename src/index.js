@@ -1,10 +1,12 @@
-import TweenLite from 'gsap/src/uncompressed/TweenLite'
-import css from 'gsap/src/uncompressed/plugins/CSSPlugin'
+import TweenLite from 'TweenLite'
+import 'CSSPlugin'
+
+// import TweenLite from 'gsap'
 
 class Turntable {
-	constructor(container ,config) {
+	constructor(container, config) {
 		var turnsCount = config.turnsCount
-		
+
 		this.pointer = config.pointer || ''
 		this.container = this.pointer || container
 		this.ANGLE = 360 / turnsCount	// 计算角度
@@ -39,7 +41,7 @@ class Turntable {
 		var angle = this.ANGLE
 		var disRotation = this.pointer ? index * angle : -index * angle
 
-		return 360 * ( Math.floor(nowRotation / 360) + 5) + disRotation
+		return 360 * (Math.floor(nowRotation / 360) + 5) + disRotation
 	}
 
 	done(index, fn) {

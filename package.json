@@ -7,7 +7,7 @@
     "url": "https://github.com/riskers/Turntable"
   },
   "homepage": "https://github.com/riskers/Turntable",
-  "main": "lib/Turntable.js",
+  "main": "lib/Turntable.min.js",
   "scripts": {
     "dev": "webpack -w",
     "build": "WEBPACK_ENV=build webpack"
@@ -21,9 +21,12 @@
   "devDependencies": {
     "babel": "^6.5.2",
     "babel-core": "^6.18.2",
+    "babel-eslint": "^7.1.1",
     "babel-loader": "^6.2.8",
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-preset-es2015": "^6.18.0",
+    "eslint": "^3.11.0",
+    "eslint-loader": "^1.6.1",
     "webpack": "^1.13.3"
   },
   "author": {

@@ -20,6 +20,7 @@ if (env === 'build') {
 }
 
 var config = {
+	devtool: 'source-map',
 	entry: __dirname + '/src/index.js',
 	output: {
 		path: __dirname + '/lib',
@@ -32,12 +33,19 @@ var config = {
 		loaders: [{
 			test: /(\.jsx|\.js)$/,
 			loader: 'babel',
-			exclude: /(node_modules|bower_components)/
+			exclude: /node_modules/
+		}, {
+			test: /(\.jsx|\.js)$/,
+	        loader: "eslint-loader",
+	        exclude: /(node_modules|bower_components)/
 		}]
 	},
 	resolve: {
-		root: path.resolve('./src'),
-		extensions: ['', '.js']
+		extensions: ['', '.js'],
+		alias: {
+			TweenLite: 'gsap/src/uncompressed/TweenLite',
+			CSSPlugin: 'gsap/src/uncompressed/plugins/CSSPlugin'
+		},
 	},
 	plugins: plugins
 }
