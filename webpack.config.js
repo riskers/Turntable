@@ -3,23 +3,24 @@ var path = require('path')
 var UglifyJsPlugin = webpack.optimize.UglifyJsPlugin
 var env = process.env.WEBPACK_ENV
 
-var libraryName = 'Turntable'
+var libraryName = 'Turntable',
 	plugins = [],
 	outoutFile = ''
 
-if(env === 'build') {
+if (env === 'build') {
 	plugins.push(new UglifyJsPlugin({
 		minimize: true,
 		compress: {
-		    warnings: false,
+			warnings: false,
 		}
 	}))
 	outputFile = libraryName + '.min.js'
-}else {
+} else {
 	outputFile = libraryName + '.js'
 }
 
 var config = {
+	devtool: 'source-map',
 	entry: __dirname + '/src/index.js',
 	output: {
 		path: __dirname + '/lib',
@@ -29,21 +30,24 @@ var config = {
 		umdNamedDefine: true
 	},
 	module: {
-		loaders: [
-	      {
-	        test: /(\.jsx|\.js)$/,
-	        loader: 'babel',
+		loaders: [{
+			test: /(\.jsx|\.js)$/,
+			loader: 'babel',
+			exclude: /node_modules/
+		}, {
+			test: /(\.jsx|\.js)$/,
+	        loader: "eslint-loader",
 	        exclude: /(node_modules|bower_components)/
-	      }
-	    ]
+		}]
 	},
 	resolve: {
-		root: path.resolve('./src'),
-		extensions: ['', '.js']
+		extensions: ['', '.js'],
+		alias: {
+			TweenLite: 'gsap/src/uncompressed/TweenLite',
+			CSSPlugin: 'gsap/src/uncompressed/plugins/CSSPlugin'
+		},
 	},
 	plugins: plugins
 }
-
-
 
 module.exports = config
