@@ -1,4 +1,5 @@
-import { TweenLite } from 'gsap'
+import TweenLite from 'gsap/src/uncompressed/TweenLite'
+import css from 'gsap/src/uncompressed/plugins/CSSPlugin'
 
 class Turntable {
 	constructor(container ,config) {
