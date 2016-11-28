@@ -7,15 +7,15 @@ var libraryName = 'Turntable',
 	plugins = [],
 	outoutFile = ''
 
-if(env === 'build') {
+if (env === 'build') {
 	plugins.push(new UglifyJsPlugin({
 		minimize: true,
 		compress: {
-		    warnings: false,
+			warnings: false,
 		}
 	}))
 	outputFile = libraryName + '.min.js'
-}else {
+} else {
 	outputFile = libraryName + '.js'
 }
 
@@ -29,13 +29,11 @@ var config = {
 		umdNamedDefine: true
 	},
 	module: {
-		loaders: [
-	      {
-	        test: /(\.jsx|\.js)$/,
-	        loader: 'babel',
-	        exclude: /(node_modules|bower_components)/
-	      }
-	    ]
+		loaders: [{
+			test: /(\.jsx|\.js)$/,
+			loader: 'babel',
+			exclude: /(node_modules|bower_components)/
+		}]
 	},
 	resolve: {
 		root: path.resolve('./src'),
