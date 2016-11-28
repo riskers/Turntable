@@ -5,10 +5,8 @@
 
 ### npm
 
-使用公司 [qnpm](http://qnpm.qiwoo.org/package/@q/Turntable)
-
 ```
-qnpm install @q/Turntable
+npm install @q/Turntable
 ```
 
 ### script
