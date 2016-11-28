@@ -1,7 +1,7 @@
 # Turntable
 转盘抽奖
 
-https://riskers.github.io/Turntable/example.html
+https://riskers.github.io/Turntable/example/index.html
 
 ## Install
 
