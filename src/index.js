@@ -1,8 +1,6 @@
 import TweenLite from 'TweenLite'
 import 'CSSPlugin'
 
-// import TweenLite from 'gsap'
-
 class Turntable {
 	constructor(container, config) {
 		var turnsCount = config.turnsCount

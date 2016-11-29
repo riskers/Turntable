@@ -113,8 +113,8 @@
 		</div>
 	</div>
 	
-	<a href="javascript:void(0)" class="btn1">重置</a>
-	<a href="javascript:void(0)" class="btn2">模拟中奖</a>
+	<a href="javascript:void(0)" class="btn1">模拟中奖</a>
+	<a href="javascript:void(0)" class="btn2">模拟没中奖</a>
 	<a href="javascript:void(0)" class="btn3">模拟网络超时</a>
 
 	<script src="../lib/Turntable.min.js"></script>
@@ -126,46 +126,66 @@
 		})
 
 		document.querySelector('.btn1').addEventListener('click', function() {
-			turntable.reset()
+			turntable.run()
+
+			ajax(1).then(function(data) {
+				draw(data)
+			})
 		})
 
 		document.querySelector('.btn2').addEventListener('click', function() {
 			turntable.run()
 
-			ajax(1)
-				.then(function(index) {
-					console.log('模拟中奖:' + index)
-					turntable.done(index, function() {
-						alert('恭喜您抽中' + index)
-					})
-				})
+			ajax(2).then(function(data) {
+				draw(data)
+			})
 		})
 
 		document.querySelector('.btn3').addEventListener('click', function() {
 			turntable.run()
 
-			ajax(2)
-				.catch(function(e) {
-					alert(e)
-					turntable.reset()
-				})
+			ajax(3).catch(function(e) {
+				alert(e)
+				turntable.reset()
+			})
 		})
 
-		// mock data
+		// 模拟请求
 		function ajax(status) {
 			return new Promise(function(resolve, reject) {
 				if(status == 1) {
 					setTimeout(function() {
 						var index = Math.floor(Math.random() * turnsCount)
-						resolve(index)
+						resolve({
+							get: 1,
+							index: index
+						})
 					}, 200)
+				}else if(status == 2){
+					setTimeout(function() {
+						resolve({
+							get: 0
+						})	
+					},2000)
 				}else {
 					setTimeout(function() {
-						reject('网络超时')	
-					},2000)
-					
+						reject('网络超时')
+					})
 				}
 			})
+		}
+
+		function draw(data) {
+			if(data.get == 1) {
+				var index = data.index
+				turntable.done(index, function() {
+					alert('恭喜您抽中' + index)
+				})
+			}else {
+				turntable.done(7, function() {
+					alert('您没有中奖')
+				})
+			}			
 		}
 	</script>
 </body>
