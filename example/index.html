@@ -2,111 +2,44 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>example</title>
-	<style>
-		.game {
-		  background: url(http://p5.yx-s.com/d/inn/95c7addf/b.png) no-repeat;
-		  background-size: 100% 100%;
-		  width: 620px;
-		  height: 620px;
-		  margin-left: auto;
-		  margin-right: auto;
-		  position: relative;
-		  z-index: 10;
-		}
-		.bar {
-		  width: 200px;
-		  height: 300px;
-		  text-align: center;
-		  position: absolute;
-		  left: 50%;
-		  top: 0;
-		  margin-left: -100px;
-		  -webkit-transform-origin: center bottom;
-		}
-		.bar h3 {
-		  font-size: 20px;
-		  color: #ffdb12;
-		  margin-top: 30px;
-		  margin-bottom: 20px;
-		}
-		.bar img {
-		  width: 85px;
-		  height: 85px;
-		}
-		.bar:nth-of-type(1) {
-		  -webkit-transform: rotate(0);
-		}
-		.bar:nth-of-type(2) {
-		  -webkit-transform: rotate(45deg);
-		  transform: rotate(45deg);
-		}
-		.bar:nth-of-type(3) {
-		  -webkit-transform: rotate(90deg);
-		}
-		.bar:nth-of-type(4) {
-		  -webkit-transform: rotate(135deg);
-		}
-		.bar:nth-of-type(5) {
-		  -webkit-transform: rotate(180deg);
-		}
-		.bar:nth-of-type(6) {
-		  -webkit-transform: rotate(225deg);
-		}
-		.bar:nth-of-type(7) {
-		  -webkit-transform: rotate(270deg);
-		}
-		.bar:nth-of-type(8) {
-		  -webkit-transform: rotate(315deg);
-		}
-		.pointer {
-			position: absolute;
-			top: 48%;
-			left: 50%;
-			-webkit-transform: translate(-50%, -50%);
-			background: url(http://p7.yx-s.com/d/inn/cb7918dc/z.png) no-repeat center center;
-			background-size: contain;
-			width: 50px;
-			height: 80px;
-			z-index: 11;
-		}
-	</style>
+	<title>Turntable</title>
+	<link rel="stylesheet" href="../src/turntable.css">
 </head>
 <body>
 	<div class="container">
 		<div class="pointer" id="pointer"></div>
-		<div class="game" id="container">
-			<div class="bar">
+		<div class="turntable" id="turntable">
+			<div class="turns">
 				<h3>0.酒</h3>
 				<img src="images/0.png" alt="">
 			</div>
 			
-			<div class="bar">
+			<div class="turns">
 				<h3>1.虚拟奖</h3>
 				<img src="images/1.jpg" alt="">
 			</div>
 			
-			<div class="bar">
+			<div class="turns">
 				<h3>2.手机</h3>
 				<img src="images/2.jpg" alt="">
 			</div>
 			
-			<div class="bar">
+			<div class="turns">
 				<h3>3.夜明珠</h3>
 				<img src="images/3.png" alt="">
 			</div>
 			
-			<div class="bar">
+			<div class="turns">
 				<h3>4.电脑</h3>
 				<img src="images/4.png" alt="">
 			</div>
 			
-			<div class="bar">
+			<div class="turns">
 				<h3>5.包子</h3>
 				<img src="images/5.png" alt="">
 			</div>
 			
-			<div class="bar" data-activity-id="" data-end-time="">
+			<div class="turns" data-activity-id="" data-end-time="">
 				<h3>6. xx</h3>
 				<img src="images/6.png" alt="">
 			</div>
@@ -121,7 +54,7 @@
 	<script>
 		var turnsCount = 8 
 
-		var turntable = new Turntable('#container', {
+		var turntable = new Turntable('#turntable', {
 			turnsCount: turnsCount
 		})
 
@@ -166,11 +99,11 @@
 						resolve({
 							get: 0
 						})	
-					},2000)
+					}, 200)
 				}else {
 					setTimeout(function() {
 						reject('网络超时')
-					})
+					}, 2000)
 				}
 			})
 		}
