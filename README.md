@@ -11,6 +11,12 @@ https://riskers.github.io/Turntable/example/index.html
 npm install Turntable
 ```
 
+### Yarn
+
+```
+yarn add Turntable
+```
+
 ### script
 
 ```html
