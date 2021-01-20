@@ -16,7 +16,7 @@
     "turntable"
   ],
   "dependencies": {
-    "gsap": "^1.19.0"
+    "gsap": "^3.6.0"
   },
   "devDependencies": {
     "babel": "^6.5.2",
